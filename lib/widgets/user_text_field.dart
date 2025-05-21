@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/weather_model.dart';
+import 'package:weather_app/services/weather_service.dart';
 
 class UserTextField extends StatelessWidget {
   const UserTextField({super.key});
@@ -6,6 +8,10 @@ class UserTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onSubmitted: (city) async {
+        weatherCity = await WeatherService().getCurrentWeather(cityName: city);
+        Navigator.pop(context);
+      },
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
         contentPadding: const EdgeInsets.symmetric(
@@ -31,3 +37,5 @@ class UserTextField extends StatelessWidget {
     );
   }
 }
+
+WeatherModel? weatherCity;

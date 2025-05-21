@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/views/search_view.dart';
 import 'package:weather_app/widgets/empty_view.dart';
+import 'package:weather_app/widgets/user_text_field.dart';
+import 'package:weather_app/widgets/weather_item.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -10,7 +13,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF52C4FF),
+        backgroundColor: const Color(0xFF4586B4),
         title: const Text(
           'Weather App',
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -30,7 +33,10 @@ class HomeView extends StatelessWidget {
           ),
         ],
       ),
-      body: const EmptyView(),
+      body:
+          weatherCity == null
+              ? const EmptyView()
+              : WeatherItem(weather: weatherCity!),
     );
   }
 }
