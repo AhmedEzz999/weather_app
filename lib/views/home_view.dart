@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
         backgroundColor: const Color(0xFF4586B4),
         title: const Text(
           'Weather App',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 30, color: Colors.white),
         ),
         actions: [
           Padding(
