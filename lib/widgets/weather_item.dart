@@ -48,7 +48,7 @@ class WeatherItem extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            'Updated at: ${weather.updatedAt}',
+            'Updated at ${weather.updatedAt}',
             style: const TextStyle(fontSize: 40, color: Colors.white),
           ),
           WeatherDetailsCard(weather: weather),

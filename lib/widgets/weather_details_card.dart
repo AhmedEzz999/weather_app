@@ -27,7 +27,7 @@ class WeatherDetailsCard extends StatelessWidget {
               ),
             ],
           ),
-          const Divider(thickness: 0),
+          const Divider(thickness: 0.7),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -38,7 +38,7 @@ class WeatherDetailsCard extends StatelessWidget {
               ),
             ],
           ),
-          const Divider(thickness: 0),
+          const Divider(thickness: 0.7),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -49,7 +49,7 @@ class WeatherDetailsCard extends StatelessWidget {
               ),
             ],
           ),
-          const Divider(thickness: 0),
+          const Divider(thickness: 1),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
