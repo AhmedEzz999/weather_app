@@ -3,7 +3,7 @@ class WeatherModel {
   final String country;
   final double currentTemp;
   final String condition;
-  final String updatedAt;
+  final DateTime date;
   final double highTemp;
   final double lowTemp;
   final double windSpeed;
@@ -15,7 +15,7 @@ class WeatherModel {
     required this.country,
     required this.currentTemp,
     required this.condition,
-    required this.updatedAt,
+    required this.date,
     required this.highTemp,
     required this.lowTemp,
     required this.windSpeed,
@@ -29,12 +29,43 @@ class WeatherModel {
       country: json['location']['country'] ?? '',
       currentTemp: json['current']['temp_c'] ?? 0,
       condition: json['current']['condition']['text'] ?? '',
-      updatedAt: json['current']['last_updated'].substring(11, 16) ?? '',
+      date:
+          DateTime.tryParse(json['current']['last_updated'] ?? '') ??
+          DateTime.now(),
       highTemp: json['forecast']['forecastday'][0]['day']['maxtemp_c'] ?? 0,
       lowTemp: json['forecast']['forecastday'][0]['day']['mintemp_c'] ?? 0,
       windSpeed: json['current']['wind_kph'] ?? 0,
       humidity: json['current']['humidity'] ?? 0,
       uvIndex: json['current']['uv'] ?? 0,
     );
+  }
+
+  String get12HourTime(DateTime time) {
+    final int hour = time.hour;
+    final String minutes = time.minute == 0 ? '00' : time.minute.toString();
+    final String period = hour < 12 ? 'AM' : 'PM';
+    final int hour12 = hour > 12 ? hour - 12 : (hour == 0 ? 12 : hour);
+    return '$hour12:$minutes $period';
+  }
+
+  String getWeatherIcon(String condition) {
+    condition = condition.toLowerCase();
+    if (condition.contains('cloudy') || condition.contains('fog')) {
+      return 'assets/images/cloudy.svg';
+    } else if (condition.contains('sunny') || condition.contains('clear')) {
+      return 'assets/images/sunny.svg';
+    } else if (condition.contains('overcast')) {
+      return 'assets/images/overcast.svg';
+    } else if (condition.contains('rain')) {
+      return 'assets/images/rainy.svg';
+    } else if (condition.contains('snow')) {
+      return 'assets/images/snowy.svg';
+    } else if (condition.contains('thunder')) {
+      return 'assets/images/thunder.svg';
+    } else {
+      return (date.hour >= 6 && date.hour < 18)
+          ? 'assets/images/sunny.svg'
+          : 'assets/images/night.svg';
+    }
   }
 }

@@ -14,10 +14,59 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetWeatherCubit(),
-      child: const MaterialApp(
+      child: MaterialApp(
+        theme: ThemeData.light(),
         debugShowCheckedModeBanner: false,
-        home: HomeView(),
+        home: const HomeView(),
       ),
     );
   }
+}
+
+MaterialColor getWeatherColor(String condition) {
+  final lcCondition = condition.toLowerCase();
+
+  if (lcCondition.contains('sunny') || lcCondition.contains('clear')) {
+    return Colors.amber;
+  }
+
+  if (lcCondition.contains('partly cloudy')) {
+    return Colors.blueGrey;
+  }
+
+  if (lcCondition.contains('cloudy') || lcCondition.contains('overcast')) {
+    return Colors.grey;
+  }
+
+  if (lcCondition.contains('mist') || lcCondition.contains('fog')) {
+    return Colors.blueGrey;
+  }
+
+  if (lcCondition.contains('rain') || lcCondition.contains('drizzle')) {
+    if (lcCondition.contains('heavy') || lcCondition.contains('torrential')) {
+      return Colors.blue;
+    }
+
+    if (lcCondition.contains('freezing')) {
+      return Colors.lightBlue;
+    }
+
+    return Colors.blue;
+  }
+
+  if (lcCondition.contains('snow') ||
+      lcCondition.contains('sleet') ||
+      lcCondition.contains('blizzard')) {
+    return Colors.blue;
+  }
+
+  if (lcCondition.contains('thunder') || lcCondition.contains('thundery')) {
+    return Colors.deepPurple;
+  }
+
+  if (lcCondition.contains('ice') || lcCondition.contains('hail')) {
+    return Colors.lightBlue;
+  }
+
+  return Colors.indigo;
 }

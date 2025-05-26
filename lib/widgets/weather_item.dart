@@ -29,7 +29,7 @@ class WeatherItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               SvgPicture.asset(
-                'assets/images/cloudy_day.svg',
+                weather.getWeatherIcon(weather.condition),
                 width: 200,
                 height: 200,
               ),
@@ -48,7 +48,7 @@ class WeatherItem extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Text(
-            'Updated at ${weather.updatedAt}',
+            'Updated at ${weather.get12HourTime(weather.date)}',
             style: const TextStyle(fontSize: 40, color: Colors.white),
           ),
           WeatherDetailsCard(weather: weather),
