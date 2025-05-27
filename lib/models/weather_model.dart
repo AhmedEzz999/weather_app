@@ -49,18 +49,19 @@ class WeatherModel {
   }
 
   String getWeatherIcon(String condition) {
-    condition = condition.toLowerCase();
-    if (condition.contains('cloudy') || condition.contains('fog')) {
+    if (condition.contains('Cloudy') ||
+        condition.contains('Fog') ||
+        condition.contains('cloudy')) {
       return 'assets/images/cloudy.svg';
-    } else if (condition.contains('sunny') || condition.contains('clear')) {
+    } else if (condition.contains('Sunny') || condition.contains('Clear')) {
       return 'assets/images/sunny.svg';
-    } else if (condition.contains('overcast')) {
+    } else if (condition.contains('Overcast')) {
       return 'assets/images/overcast.svg';
-    } else if (condition.contains('rain')) {
+    } else if (condition.contains('Rain')) {
       return 'assets/images/rainy.svg';
-    } else if (condition.contains('snow')) {
+    } else if (condition.contains('Snow')) {
       return 'assets/images/snowy.svg';
-    } else if (condition.contains('thunder')) {
+    } else if (condition.contains('Thunder')) {
       return 'assets/images/thunder.svg';
     } else {
       return (date.hour >= 6 && date.hour < 18)
