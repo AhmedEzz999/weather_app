@@ -51,13 +51,14 @@ class WeatherModel {
   String getWeatherIcon(String condition) {
     if (condition.contains('Cloudy') ||
         condition.contains('Fog') ||
+        condition.contains('Mist') ||
         condition.contains('cloudy')) {
       return 'assets/images/cloudy.svg';
     } else if (condition.contains('Sunny') || condition.contains('Clear')) {
       return 'assets/images/sunny.svg';
     } else if (condition.contains('Overcast')) {
       return 'assets/images/overcast.svg';
-    } else if (condition.contains('Rain')) {
+    } else if (condition.contains('Rain') || condition.contains('rain')) {
       return 'assets/images/rainy.svg';
     } else if (condition.contains('Snow')) {
       return 'assets/images/snowy.svg';
