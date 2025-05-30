@@ -52,7 +52,7 @@ class WeatherModel {
     if (condition.contains('Cloudy') ||
         condition.contains('Fog') ||
         condition.contains('Mist') ||
-        condition.contains('cloudy')) {
+        condition.contains('Partly')) {
       return 'assets/images/cloudy.svg';
     } else if (condition.contains('Sunny') || condition.contains('Clear')) {
       return 'assets/images/sunny.svg';
